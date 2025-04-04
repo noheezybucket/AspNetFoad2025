@@ -12,14 +12,20 @@ namespace AspNetMvcFoad2025.Models
 		[Key]
 		public int IdColis { get; set; }
 
-		[MaxLength(30, ErrorMessage ="Chaine trop longue"), Required(ErrorMessage = "Champs requis"), Display(Name="Code Colis")]
+		[MaxLength(15), Required(ErrorMessage = "Champs requis"), Display(Name="Code Colis")]
         public string CodeColis { get; set; }
 
-        [MaxLength(30, ErrorMessage = "Chaine trop longue"), Required(ErrorMessage = "Champs requis"), Display(Name = "Libelle Colis")]
+        [MaxLength(80), Required(ErrorMessage = "Champs requis"), Display(Name = "Libelle Colis")]
         public string LibelleColis { get; set; }
 
-        [MaxLength(1000, ErrorMessage = "Chaine trop longue"), Required(ErrorMessage = "Champs requis"), Display(Name = "Description Colis")]
+        [MaxLength(1000), Required(ErrorMessage = "Champs requis"), Display(Name = "Description Colis")]
         public string DescriptionColis { get; set; }
+
+        [Display(Name = "Poids Colis")]
+        public float PoidsColis { get; set; }
+
+        [MaxLength(20), Required(ErrorMessage = "*"), Display(Name = "Type Colis")]
+        public string TypeColis { get; set; }
 
 
 

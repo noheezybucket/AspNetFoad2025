@@ -211,10 +211,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Administrateur.cs" />
     <Compile Include="Models\BdTrackingContext.cs" />
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Colis.cs" />
+    <Compile Include="Models\DemandeColis.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Livreur.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SuiviDemande.cs" />
+    <Compile Include="Models\UserColis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
