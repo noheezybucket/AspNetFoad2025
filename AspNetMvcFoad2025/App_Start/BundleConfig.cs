@@ -25,6 +25,10 @@ namespace AspNetMvcFoad2025
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/assets/css/sb-admin-2.min.css",
+                      "~/Content/PagedList.css"));
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AspNetMvcFoad2025.Models.Colis>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeColis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibelleColis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionColis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PoidsColis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeColis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeColis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibelleColis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionColis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoidsColis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeColis)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdColis }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdColis }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdColis })
+        </td>
+    </tr>
+}
+
+</table>
