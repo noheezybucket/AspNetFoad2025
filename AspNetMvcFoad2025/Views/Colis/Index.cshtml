@@ -1,5 +1,5 @@
-﻿@model IEnumerable<AspNetMvcFoad2025.Models.Colis>
-
+﻿@model PagedList.IPagedList<AspNetMvcFoad2025.Models.Colis>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,49 +10,70 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div id="divSearch">
+    @using (Html.BeginForm("Index", "Colis", FormMethod.Get))
+    {
+        <p>
+
+            @Html.TextBox("Libelle", ViewBag.searchString as string, new { @class = "form-control" })
+            <input type="submit" value="Rechercher" class="glyphicon glyphicon-search btn btn-info" />
+        </p>
+    }
+</div>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CodeColis)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CodeColis)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LibelleColis)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LibelleColis)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DescriptionColis)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DescriptionColis)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PoidsColis)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PoidsColis)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TypeColis)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().TypeColis)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodeColis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LibelleColis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescriptionColis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PoidsColis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeColis)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdColis }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdColis }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdColis })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeColis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleColis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionColis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoidsColis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeColis)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdColis }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdColis }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdColis })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<br />
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+<br />
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Libelle=ViewBag.Libelle }))

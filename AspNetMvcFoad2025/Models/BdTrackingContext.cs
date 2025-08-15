@@ -19,5 +19,7 @@ namespace AspNetMvcFoad2025.Models
         public DbSet<Livreur> livreurs { get; set; }
         public DbSet<DemandeColis> demandeColis { get; set; }
 		public DbSet<SuiviDemande> suiviDemandes { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetMvcFoad2025.Models.Animal> Animals { get; set; }
     }
 }
